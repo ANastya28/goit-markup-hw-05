@@ -214,6 +214,10 @@ address {
     border-radius: 2px;
 }
 
+.text-current {
+    color: #404BBF;
+}
+
 .site-nav .nav {
     display: block;
 }
