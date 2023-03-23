@@ -30,6 +30,13 @@
     --border-button-colorvar#E7E9FC;
     --header-bottom-color:#E7E9FC;
     --border-portfolio-color: #E7E9FC;
+    --backdrop-background-color:rgba(46, 47, 66, 0.4);
+    --modal--background-color: #FFFFFF;
+    --modal-close-backgraund-color: #E7E9FC;
+    --icon-color: #8E8F99;
+    --iconsec-color: #F4F4FD;
+    --accent-backgraund-color: #31D0AA;
+    --overlay-text-color: #F4F4FD;
 }
 
 
@@ -99,7 +106,7 @@ body {
 
     width: 100%;
     height: 100%;
-    background: rgba(46, 47, 66, 0.4);
+    background: var(--backdrop-background-color);
     opacity: 1;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -116,7 +123,7 @@ body {
     width: 408px;
     height: 576px;
     
-    background: #FFFFFF;
+    background-color: var(--modal--background-color);
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 
@@ -125,7 +132,7 @@ body {
 }
 
 .modal-close-bg {
-    background-color: #E7E9FC;
+    background-color: var(--modal-close-backgraund-color);
     border: 1px solid rgba(0, 0, 0, 0.1);
     width: 24px;
     height: 24px;
@@ -144,9 +151,9 @@ body {
 
 .modal-close-bg:hover,
 .modal-close-bg:focus {
-    color: #FFFFFF;
-    background-color: #404BBF;
-    border: #404BBF;
+    color: var(--modal--background-color);
+    background-color: var(--accent-color);
+    border: var(--accent-color);
 }
 
 .modal-close-icon {
@@ -215,6 +222,25 @@ address {
     color: var(--accent-color)
 }
 
+.hoverline::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: var(--button-backgraund-color);
+    border-radius: 2px;
+    opacity: 0;
+
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), bottom 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1), height 250ms cubic-bezier(0.4, 0, 0.2, 1), width 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hoverline:hover::after {
+    opacity: 1;
+}
+
 .current::after {
     content:'';
     
@@ -224,27 +250,14 @@ address {
     display: block;
     width: 100%;
     height: 4px;
-    background-color: #4D5AE5;
+    background-color: var(--button-backgraund-color);
     border-radius: 2px;
-
+    
     transition: bottom 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1), height 250ms cubic-bezier(0.4, 0, 0.2, 1), width 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.nav:hover::after {
-    content: '';
-        
-    position: absolute;
-    bottom: -1px;
-        
-    display: block;
-    width: 100%;
-    height: 4px;
-    background-color: #4D5AE5;
-    border-radius: 2px;
-}
-
 .text-current {
-    color: #404BBF;
+    color: var(--accent-color);
 }
 
 .site-nav .nav {
@@ -410,13 +423,13 @@ img {
     height: 64px; */
     background-position: center;
     background-size: 264px 112px;
-    background-color: #F4F4FD;
+
     display: flex;
     
 }
 
 .benefits-bg {
-    background-color: #F4F4FD;
+    background-color: var(--team-backgraund-color);
     /* padding: 24px 100px; */
     margin-bottom: 8px;
     border-radius: 4px;
@@ -477,7 +490,7 @@ img {
 
     border: 1px solid #8E8F99;
     border-radius: 4px;
-    color: #8E8F99; 
+    color: var(--icon-color); 
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
     /* color задан дя иконки, а у иконки каррентколор, а не фил, т.к. она унаследует цвет*/
 }
@@ -491,8 +504,8 @@ img {
 
 .custom-link:hover,
 .custom-link:focus {
-    border: 1px solid #404BBF;
-    color: #404BBF;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
 }
 
 /* .custom-icon:hover,
@@ -543,8 +556,6 @@ img {
    position: relative;
    overflow: hidden;
 }
-  
- /* #4D5AE5; */
 
 .overlay-text {
     position: absolute;
@@ -560,8 +571,8 @@ img {
     margin: 0; 
     
 
-    background-color: #4D5AE5;
-    color: #F4F4FD;
+    background-color: var(--button-backgraund-color);
+    color: var(--overlay-text-color);
     letter-spacing: 0.02em;
     line-height: 1.5;
 
@@ -646,7 +657,7 @@ img {
 .team-icon {
     /* width: 16px;
     height: 16px; */
-    fill: #f4f4fd;
+    fill: var(--iconsec-color);
     background-size: contain;
     background-position: center;
     /* margin: 12px 12px; */
@@ -666,7 +677,7 @@ img {
     width: 40px;
     height: 40px;
 
-    background-color: #4D5AE5;
+    background-color: var(--button-backgraund-color);
     border-radius: 50%;
 
     display: flex;
@@ -678,7 +689,7 @@ img {
 
 .team-link:hover,
 .team-link:focus {
-    background-color:#404BBF;
+    background-color: var(--accent-color);
 }
 
 .filters {
@@ -754,7 +765,7 @@ img {
 .footer-icon {
     /* width: 24px;
     height: 24px; */
-    fill: #f4f4fd;
+    fill: var(--iconsec-color);
     background-position: center;
     background-size: contain;
     /* margin: 8px 8px; */
@@ -793,6 +804,6 @@ img {
 
 .footer-link:hover,
 .footer-link:focus {
-    background-color:#31D0AA;
+    background-color: var(--accent-backgraund-color);
 }
 
